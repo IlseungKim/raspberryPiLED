@@ -1,0 +1,45 @@
+cd      이동
+mkdir   디렉토리 생성
+
+(vim - 메뉴판)
+vim ~/.vimrc vim    설정
+gcc     -o (만들이름) (컴파일할파일)
+
+
+매번 gcc 하기 힘들때 Makefile 사용하기
+
+Makefile 
+
+	all=EXE_NAME을 실행
+	clean=EXE_NAME을 제거
+
+
+
+#include <stdio.h>
+#include <wiringPi.h>
+
+#define LED1 4 // BCM_GPIO 23
+#define LED2 5 // BCM_GPIO 24
+
+int main (void)
+{
+  if (wiringPiSetup () == -1)
+  return 1 ;
+
+  pinMode (LED1, OUTPUT) ;
+  pinMode (LED2, OUTPUT) ;
+
+  for (;;)
+  {
+    digitalWrite (LED1, 1) ; // On
+    digitalWrite (LED2, 1) ; // On
+
+    delay (1000) ; // ms
+
+    digitalWrite (LED1, 0) ; // Off
+    digitalWrite (LED2, 0) ; // Off
+
+    delay (1000) ;
+  }
+  return 0 ;
+}
